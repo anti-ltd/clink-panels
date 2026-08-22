@@ -1,0 +1,16 @@
+name: Release panels
+on:
+  push:
+    branches: [main]
+    paths: ["Panels/**", "tools/**", ".github/workflows/release.yml"]
+permissions: { contents: write }
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/build-manifest.py
+      - run: gh release delete latest --yes || true
+        env: { GH_TOKEN: "${{ github.token }}" }
+      - run: gh release create latest Panels/*.clinkpanel manifest.json --title "Latest panels" --latest
+        env: { GH_TOKEN: "${{ github.token }}" }
