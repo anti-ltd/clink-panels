@@ -36,6 +36,16 @@ The files live in [`Panels/`](Panels). They are small and readable, so they are 
 
 Open **General → Repositories** in Clink and add `owner/repository`. Then open **Tools → Custom Panels** and choose your repository. Clink asks for a separate trust decision before downloading panel logic.
 
+## Make a panel with an AI agent
+
+[`PROMPT.md`](PROMPT.md) is a ready-to-use brief for an AI coding agent. Fork the repository, open the fork in your agent, and say:
+
+```text
+Read PROMPT.md and create a panel that [describe the keyboard task it should make easier].
+```
+
+The prompt keeps the agent within Clink's constrained panel API and directs it to existing examples. Review and test the generated panel before publishing; panels require an explicit trust decision from people who install them.
+
 ## What Clink verifies
 
 Clink accepts only public HTTPS GitHub release files from the repository you added. It verifies the manifest, SHA-256 hash, byte count, file type, and constrained source policy before installation.
