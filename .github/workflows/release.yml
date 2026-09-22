@@ -1,16 +1,41 @@
 name: Release panels
+
 on:
   push:
     branches: [main]
     paths: ["Panels/**", "tools/**", ".github/workflows/release.yml"]
-permissions: { contents: write }
+  workflow_dispatch:
+
+concurrency:
+  group: panel-release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: python3 tools/build-manifest.py
-      - run: gh release delete latest --yes || true
+      - name: Publish a permanent panel release
         env: { GH_TOKEN: "${{ github.token }}" }
-      - run: gh release create latest Panels/*.clinkpanel manifest.json --title "Latest panels" --latest
-        env: { GH_TOKEN: "${{ github.token }}" }
+        shell: bash
+        run: |
+          shopt -s nullglob
+          assets=(Panels/*.clinkpanel manifest.json)
+          tag=$(python3 -c 'import json; print(json.load(open("manifest.json"))["version"])')
+          if draft=$(gh release view "$tag" --json isDraft --jq .isDraft); then
+            if [ "$draft" = true ]; then
+              # Resume an interrupted upload while the release is still hidden.
+              gh release upload "$tag" "${assets[@]}" --clobber
+              gh release edit "$tag" --draft=false --latest
+            else
+              gh release edit "$tag" --latest
+            fi
+          else
+            gh release create "$tag" "${assets[@]}" \
+              --target "$GITHUB_SHA" --title "Latest panels" --draft
+            gh release edit "$tag" --draft=false --latest
+          fi

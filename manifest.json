@@ -1,0 +1,44 @@
+{
+  "version": "panels-293ccb04da2896134fbec66576d86084f51ceaeedf71f34b246271e01c5c879d",
+  "panels": [
+    {
+      "id": "fonts",
+      "name": "Fonts",
+      "icon": "paintpalette",
+      "summary": "Convert text into Unicode font styles",
+      "version": "panels-293ccb04da2896134fbec66576d86084f51ceaeedf71f34b246271e01c5c879d",
+      "asset": {
+        "path": "fonts.clinkpanel",
+        "url": "https://github.com/anti-ltd/clink-panels/releases/download/panels-293ccb04da2896134fbec66576d86084f51ceaeedf71f34b246271e01c5c879d/fonts.clinkpanel",
+        "sha256": "bfdba0ff9bc9fc8dd6c4885f4d855ddf744fcf2d46fa5ea8cc6c760debb75c77",
+        "byteCount": 13161
+      }
+    },
+    {
+      "id": "kaomoji",
+      "name": "Kaomoji",
+      "icon": "face.smiling",
+      "summary": "Tap to insert a kaomoji",
+      "version": "panels-293ccb04da2896134fbec66576d86084f51ceaeedf71f34b246271e01c5c879d",
+      "asset": {
+        "path": "kaomoji.clinkpanel",
+        "url": "https://github.com/anti-ltd/clink-panels/releases/download/panels-293ccb04da2896134fbec66576d86084f51ceaeedf71f34b246271e01c5c879d/kaomoji.clinkpanel",
+        "sha256": "0c1bc13c5245bf5d31b09cfdfe14966e24e2cb7b7691c07cf55ac40cec1bb4e6",
+        "byteCount": 530
+      }
+    },
+    {
+      "id": "snippets",
+      "name": "Snippets",
+      "icon": "text.badge.plus",
+      "summary": "Quick canned phrases",
+      "version": "panels-293ccb04da2896134fbec66576d86084f51ceaeedf71f34b246271e01c5c879d",
+      "asset": {
+        "path": "snippets.clinkpanel",
+        "url": "https://github.com/anti-ltd/clink-panels/releases/download/panels-293ccb04da2896134fbec66576d86084f51ceaeedf71f34b246271e01c5c879d/snippets.clinkpanel",
+        "sha256": "a1f0bcc1ce43d43038ed132938042b55008853aa391f11b6e190b540bb3ccb69",
+        "byteCount": 422
+      }
+    }
+  ]
+}
