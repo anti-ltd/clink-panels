@@ -55,3 +55,7 @@ Panels contain executable-style logic, so adding a repository is a stronger trus
 ## Publishing is automatic
 
 Keep `Panels/`, `tools/`, and `.github/workflows/` in your fork. Add or update a panel and push to `main`. GitHub Actions validates the files and refreshes the `latest` release.
+
+## Platform availability
+
+`platforms.json` sets the default platform for packs in this repository and optional overrides keyed by pack ID (language code or locale for language packs). Use `ios`, `android`, or `both`. The manifest builder writes `platform` on every entry; older entries without it mean `both`. Platform targeting affects repository discovery and downloads, not the portable format of a person’s own exported content.
